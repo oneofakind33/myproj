@@ -130,7 +130,7 @@ int main() {
         int str_width = strlen(time_str) * 10; //Calculates the pixel width of the time string
         int x_start = (128 - str_width) / 2; //center the string
 
-        oled_clear(); // you may optimize further to only update diff
+        oled_clear(); //cleasr OLED
         oled_print_big_string(x_start, 1, time_str); //print the time
 
         usleep(500000); // blink every 0.5 second

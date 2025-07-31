@@ -68,18 +68,19 @@ void oled_init() //oled initialization
 void oled_clear()   //clear the pixels i.e low
 {  
     for (int page = 0; page < 4; page++) {  //4 pages (each page = 8 vertical pixels), so 32 pixels vertically / 8 = 4 pages.
-        oled_command(0xB0 + page);
-        oled_command(0x00);
-        oled_command(0x10);
-        for (int i = 0; i < 128; i++) oled_data(0x00);
+        oled_command(0xB0 + page); //Sets the current page address.
+        oled_command(0x00);  //Sets the lower nibble of the column address (bits 0–3). (horizaontally)
+        oled_command(0x10);  //Sets the lower nibble of the column address (bits 0–3).
+        for (int i = 0; i < 128; i++)  //Loops through pages 0 to 3 to clear all 32 vertical pixels
+            oled_data(0x00);  //clear cmd
     }
 }
 
-void oled_set_cursor(int x, int page)  //postions the cursor for further prin
+void oled_set_cursor(int x, int page)  //postions the cursor for further printing/displaying x= column postion 0-127 , vertical page (0–7)
 { 
-    oled_command(0xB0 + page);  
-    oled_command(0x00 + (x & 0x0F));
-    oled_command(0x10 + ((x >> 4) & 0x0F));
+    oled_command(0xB0 + page);  //This sets the page address
+    oled_command(0x00 + (x & 0x0F));  //This sets the lower nibble (4 bits) of the column address.
+    oled_command(0x10 + ((x >> 4) & 0x0F));  //This sets the higher nibble of the column address.
 }
 
 void oled_print_big_char(char c) //displays a single big character (6x10)

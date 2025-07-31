@@ -20,7 +20,7 @@ Steps : ( This is done in the host machine, in my case its an ubuntu linux machi
    I use -static as my target OS is minimal buildroot and lacks dynamic libraries. The command converts the c code to ARM based C file.
 4. Then using using SCP command transfer the ARM_C file to luckfox pico using the command "SCP filesname root@<luckfoxip>:/<dest. addr>.
 
-(connect the luckfox device on the host machine and get the ip address of the device)
+to be done on the luckfox using terminal(connect the luckfox device on the host machine and get the ip address of the device)
 
 5. Login to the Luckfox using ssh, i.e "ssh root@ip address"
 6. Change directory to the dest. addr. then using chmod +x filename change the file permission i.e change the arm_c file to executable to run code on luckfox.
